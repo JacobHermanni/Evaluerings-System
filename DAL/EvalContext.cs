@@ -32,7 +32,6 @@ namespace DAL
                 "database=evaluation;" +
                 "uid=root;" +
                 "pwd=root;"
-
             );
         }
 

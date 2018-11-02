@@ -8,7 +8,7 @@ using DAL.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-//using WebService.Models;
+using WebService.Models;
 using IConfiguration = Microsoft.Extensions.Configuration.IConfiguration;
 
 namespace WebService
@@ -52,6 +52,9 @@ namespace WebService
 
                 //cfg.CreateMap<Note, NoteModel>()
                 //    .ReverseMap();
+
+                cfg.CreateMap<Course, CourseModel>()
+                    .ReverseMap();
 
             });
 

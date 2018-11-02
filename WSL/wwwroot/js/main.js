@@ -79,6 +79,11 @@ require(['knockout'], function (ko) {
         template: { require: "text!components/historyPage/history-page_view.html" }
     });
 
+    ko.components.register("course-page", {
+        viewModel: { require: "components/coursePage/course-page" },
+        template: { require: "text!components/coursePage/course-page.html"}
+    });
+
 });
 
 
@@ -198,6 +203,9 @@ require(["knockout", "jquery", "broadcaster", "jqcloud", "bootstrap"], function 
 
                         case "user-page":
                             currentParams(viewInfo.id);
+                            break;
+
+                        case "course-page":
                             break;
 
                         default:

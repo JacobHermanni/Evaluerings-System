@@ -28,7 +28,8 @@
         var pages = [
             { name: 'Posts', view: 'all-posts' },
             { name: 'Favorites', view: 'favorites-page' },
-            { name: 'History', view: 'history-page' }
+            { name: 'History', view: 'history-page' },
+            { name: 'Courses', view: 'course-page' },
         ];
 
         var isActive = function (menu) {
