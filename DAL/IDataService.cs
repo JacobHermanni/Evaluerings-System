@@ -15,5 +15,7 @@ namespace DAL
         List<Question> GetQuestions();
 
         List<QuestionOption> GetQuestionOptions();
+
+        Question GetQuestion(int questionID);
     }
 }

@@ -50,6 +50,14 @@ namespace DAL
             }
         }
 
+        public Question GetQuestion(int questionID)
+        {
+            using (var db = new EvalContext())
+            {
+                return db.Question.Find(questionID);
+            }
+        }
+
         public List<QuestionOption> GetQuestionOptions()
         {
             using (var db = new EvalContext())
