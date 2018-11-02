@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{E2A7D5AF-8117-4DBC-ACD7-8716A88E6A44}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebService", "WSL\WebService.csproj", "{D779595B-AEA6-4B6F-B6B5-FA096CBEF0C3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{30EA04B9-1183-4D22-9ADA-D4A255228C0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E2A7D5AF-8117-4DBC-ACD7-8716A88E6A44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E2A7D5AF-8117-4DBC-ACD7-8716A88E6A44}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E2A7D5AF-8117-4DBC-ACD7-8716A88E6A44}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E2A7D5AF-8117-4DBC-ACD7-8716A88E6A44}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D779595B-AEA6-4B6F-B6B5-FA096CBEF0C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D779595B-AEA6-4B6F-B6B5-FA096CBEF0C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D779595B-AEA6-4B6F-B6B5-FA096CBEF0C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D779595B-AEA6-4B6F-B6B5-FA096CBEF0C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30EA04B9-1183-4D22-9ADA-D4A255228C0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30EA04B9-1183-4D22-9ADA-D4A255228C0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30EA04B9-1183-4D22-9ADA-D4A255228C0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30EA04B9-1183-4D22-9ADA-D4A255228C0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

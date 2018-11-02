@@ -8,10 +8,10 @@ using DAL.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using WebService.Models;
+//using WebService.Models;
 using IConfiguration = Microsoft.Extensions.Configuration.IConfiguration;
 
-namespace SubProject_2
+namespace WebService
 {
     public class Startup
     {
@@ -49,32 +49,10 @@ namespace SubProject_2
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<Post, PostModel>()
-                    .ReverseMap();
-                cfg.CreateMap<User, UserModel>()
-                    .ReverseMap();
-                cfg.CreateMap<Question, QuestionModel>()
-                    .ReverseMap();
-                cfg.CreateMap<Answer, AnswerModel>()
-                    .ReverseMap();
-                cfg.CreateMap<Comment, CommentModel>()
-                    .ReverseMap();
-                cfg.CreateMap<Note, NoteModel>()
-                    .ReverseMap();
-                cfg.CreateMap<Favorite, FavoriteModel>()
-                    .ReverseMap();
-                cfg.CreateMap<FavoriteList, FavoriteListModel>()
-                    .ReverseMap();
-                cfg.CreateMap<Result, ResultModel>()
-                    .ReverseMap();
-                cfg.CreateMap<RelatedWordList, RelatedWordListModel>()
-                    .ReverseMap();
-                cfg.CreateMap<CoOrcorruingWord, CoOrcorruingWordListModel>()
-                    .ReverseMap();
-                cfg.CreateMap<Tags, TagModel>()
-                    .ReverseMap();
-                cfg.CreateMap<TermNetwork, TermNetworkModel>()
-                    .ReverseMap();
+
+                //cfg.CreateMap<Note, NoteModel>()
+                //    .ReverseMap();
+
             });
 
             return config.CreateMapper();

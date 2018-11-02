@@ -6,25 +6,26 @@ using System.Linq;
 
 namespace DAL.Models
 {
-    public class Question
+    public class Questionnaire
     {
         [Key]
-        public int question_id { get; set; }
-
         public int questionnaire_id { get; set; }
+
+        public int evaluation_id { get; set; }
 
         public string description { get; set; }
 
-        public List<QuestionOption> questionOptions
+        public List<Question> questions
         {
             get
             {
                 using (var db = new EvalContext())
                 {
-                    var getQuestionsOptions = db.Question_Option.Where(x => x.question_id == question_id);
-                    if (!getQuestionsOptions.Any()) return null;
-
-                    return getQuestionsOptions.ToList();
+                    var getQuestions = db.Question.Where(x => x.questionnaire_id == questionnaire_id);
+                    
+                    if (!getQuestions.Any()) return null;
+                    
+                    return getQuestions.ToList();
                 }
             }
             set { }

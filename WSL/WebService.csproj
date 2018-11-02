@@ -24,10 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DAL\DAL.csproj" />
+    <None Remove="wwwroot\js\components\searchHistory\EmptyHTMLFile.html" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="wwwroot\js\components\searchHistory\EmptyHTMLFile.html" />
+    <ProjectReference Include="..\DAL\DAL.csproj" />
   </ItemGroup>
 </Project>
