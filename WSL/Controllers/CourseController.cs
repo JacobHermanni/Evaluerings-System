@@ -28,12 +28,9 @@ namespace WebService
         {
 
             var courses = _dataService.GetCourses();
-            var lort = "..lort";
-            if (courses == null) return Ok(lort);
+            if (courses == null) return NotFound();
 
-            // mapper enkelt objekt og derefter indsætter enkel url
             var model = _mapper.Map<List<CourseModel>>(courses);
-            var json = courses[0].course_name;
 
             return Ok(model);
         }

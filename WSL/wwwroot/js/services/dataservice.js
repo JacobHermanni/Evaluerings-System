@@ -162,7 +162,16 @@
         });
     }
 
+    var getCourses = function (callback) {
+        $.getJSON("http://localhost:5001/api/course/", function (data) {
+            if (data !== undefined) {
+                callback(data);
+            }
+        });
+    }
+
     return {
+        getCourses,
         searchedPosts,
         changePage,
         getQuestion,

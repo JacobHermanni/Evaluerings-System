@@ -5,13 +5,15 @@
 
         var getCourses = function () {
             dataservice.getCourses(data => {
-                courses(data.courses);
+                courses(data);
+                console.log(data);
             });
         }
 
+        getCourses();
 
         return {
-            courses;
+            courses
         };
 
     }
