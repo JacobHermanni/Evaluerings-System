@@ -49,13 +49,16 @@ namespace WebService
         {
             var config = new MapperConfiguration(cfg =>
             {
-
-                //cfg.CreateMap<Note, NoteModel>()
-                //    .ReverseMap();
-
                 cfg.CreateMap<Course, CourseModel>()
                     .ReverseMap();
-
+                cfg.CreateMap<Evaluation, EvaluationModel>()
+                    .ReverseMap();
+                cfg.CreateMap<Questionnaire, QuestionnaireModel>()
+                    .ReverseMap();
+                cfg.CreateMap<Question, QuestionModel>()
+                    .ReverseMap();
+                cfg.CreateMap<QuestionOption, QuestionOptionModel>()
+                    .ReverseMap();
             });
 
             return config.CreateMapper();
