@@ -32,10 +32,10 @@ namespace WebService
             if (courses == null) return Ok(lort);
 
             // mapper enkelt objekt og derefter indsætter enkel url
-            var model = _mapper.Map<CourseModel>(courses);
+            var model = _mapper.Map<List<CourseModel>>(courses);
             var json = courses[0].course_name;
 
-            return Ok(json);
+            return Ok(model);
         }
     }
 }
