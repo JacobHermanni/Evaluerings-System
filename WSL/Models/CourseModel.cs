@@ -11,5 +11,7 @@ namespace WebService.Models
         public int course_id { get; set; }
 
         public string course_name { get; set; }
+
+        public EvaluationModel Evaluation { get; set; }
     }
 }
