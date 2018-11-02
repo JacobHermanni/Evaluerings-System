@@ -6,14 +6,18 @@
         var getCourses = function () {
             dataservice.getCourses(data => {
                 courses(data);
-                console.log(data);
             });
         }
 
         getCourses();
 
+        var getEvaluation = function () {
+            bc.publish(bc.events.changeView, { to: "evaluation-page", from: "courses", course: this });
+        }
+
         return {
-            courses
+            courses,
+            getEvaluation
         };
 
     }

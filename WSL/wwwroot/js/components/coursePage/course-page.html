@@ -5,7 +5,7 @@
     <div>
         <ul data-bind="foreach: courses">
             <li>
-                <a href="#" data-bind="text: course_name"></a>
+                <a href="#" data-bind="text: course_name, click: $parent.getEvaluation"></a>
             </li>
         </ul>
     </div>

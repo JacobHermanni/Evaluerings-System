@@ -31,7 +31,7 @@
             { name: 'History', view: 'history-page' },
             { name: 'Courses', view: 'course-page' },
             { name: 'Results', view: 'result-page' },
-            { name: 'Answers', view: 'answer-page' },
+            { name: 'Answers', view: 'answer-page' }
         ];
 
         var isActive = function (menu) {
