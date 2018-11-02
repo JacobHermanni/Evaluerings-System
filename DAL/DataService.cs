@@ -58,6 +58,49 @@ namespace DAL
             }
         }
 
+        public Question CreateQuestion(int questionID, string description)
+        {
+            using (var db = new EvalContext())
+            {
+                // tjek for eksisterende question. Hvis der er en så returner null, da redigering ikke skal ske gennem Create (rest)
+                var existingQuestion = GetQuestion(questionID);
+
+                if (existingQuestion != null) return null;
+
+                var question = new Question
+                {
+                    question_id = questionID,
+                    questionnaire_id = 0,
+                    description = description,
+                    questionOptions = null
+                };
+
+                db.Question.Add(question);
+
+                db.SaveChanges();
+
+                // returner den nyoprettede note
+                return GetQuestion(questionID);
+            }
+        }
+
+        public bool DeleteQuestion(int questionID)
+        {
+            using (var db = new EvalContext())
+            {
+                var existingQuestion = db.Question.Find(questionID);
+
+                if (existingQuestion != null)
+                {
+                    db.Question.Remove(existingQuestion);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            // statuscode kræver false hvis der ikke kunne findes noget at slette og true, hvis der var noget at slette som slettes.
+            return false;
+        }
+
         public List<QuestionOption> GetQuestionOptions()
         {
             using (var db = new EvalContext())

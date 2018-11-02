@@ -9,7 +9,7 @@ using WebService.Models;
 
 namespace WebService
 {
-    [Route("/api/course")]
+    [Route("/api/courses")]
     public class CourseController : Controller
     {
 

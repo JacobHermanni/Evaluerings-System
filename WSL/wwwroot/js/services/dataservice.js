@@ -163,7 +163,7 @@
     }
 
     var getCourses = function (callback) {
-        $.getJSON("http://localhost:5001/api/course/", function (data) {
+        $.getJSON("http://localhost:5001/api/courses/", function (data) {
             if (data !== undefined) {
                 callback(data);
             }

@@ -14,8 +14,13 @@ namespace DAL
 
         List<Question> GetQuestions();
 
+        Question GetQuestion(int questionID);
+
+        Question CreateQuestion(int questionID, string description);
+
+        bool DeleteQuestion(int questionID);
+
         List<QuestionOption> GetQuestionOptions();
 
-        Question GetQuestion(int questionID);
     }
 }
