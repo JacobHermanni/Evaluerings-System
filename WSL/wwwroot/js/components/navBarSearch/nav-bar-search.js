@@ -30,6 +30,8 @@
             { name: 'Favorites', view: 'favorites-page' },
             { name: 'History', view: 'history-page' },
             { name: 'Courses', view: 'course-page' },
+            { name: 'Results', view: 'result-page' },
+            { name: 'Answers', view: 'answer-page' },
         ];
 
         var isActive = function (menu) {

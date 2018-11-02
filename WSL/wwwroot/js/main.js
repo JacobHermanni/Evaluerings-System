@@ -84,6 +84,16 @@ require(['knockout'], function (ko) {
         template: { require: "text!components/coursePage/course-page.html"}
     });
 
+    ko.components.register("result-page", {
+        viewModel: { require: "components/resultPage/result-page" },
+        template: { require: "text!components/resultPage/result-page_view.html" }
+    });
+
+    ko.components.register("answer-page", {
+        viewModel: { require: "components/answerPage/answer-page" },
+        template: { require: "text!components/answerPage/answer-page.html" }
+    });
+
 });
 
 
@@ -103,7 +113,7 @@ require(["knockout", "jquery", "broadcaster", "jqcloud", "bootstrap"], function 
                 } else {
                     currentView("all-posts");
                 }
-            }
+            };
 
             var favoritesState = {};
             var allPostsState = {};
@@ -208,10 +218,16 @@ require(["knockout", "jquery", "broadcaster", "jqcloud", "bootstrap"], function 
                         case "course-page":
                             break;
 
+                        case "result-page":
+                            break;
+
+                        case "answer-page":
+                            break;
+
                         default:
                             break;
                     }
-                    
+
                     // opdater currentview
                     currentView(viewInfo.to);
                 });
@@ -226,7 +242,7 @@ require(["knockout", "jquery", "broadcaster", "jqcloud", "bootstrap"], function 
                 //favoritesState,
                 //allPostsState,
                 //historyState
-            }
+            };
 
         })();
 
@@ -235,4 +251,4 @@ require(["knockout", "jquery", "broadcaster", "jqcloud", "bootstrap"], function 
 
 
     })();
-})
+});
