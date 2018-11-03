@@ -6,6 +6,7 @@ define(['knockout', 'broadcaster', 'dataservice'], function (ko, bc, dataservice
         var report = ko.observable(params.activity.evaluation.report);
         var newReport = ko.observable("");
         var newQuestion = ko.observable("");
+        var questionBank = ko.observableArray("");
 
         var addQuestion = function () {
             // tjek for om spørgsmålet er for kort
@@ -26,18 +27,30 @@ define(['knockout', 'broadcaster', 'dataservice'], function (ko, bc, dataservice
                         }
                     }
                 });
+
+                newQuestion("");
             }
         }
 
-        var input = document.getElementById("inputQuestion");
+        var openQuestionBank = function () {
+            dataservice.getQuestionsOnQuestionnaire(1337, data => {
+                questionBank(data);
+            });
+        }
 
+        var updatenewQuestionText = function (choice) {
+            newQuestion(choice.description);
+        }
+
+        var input = document.getElementById("inputQuestion");
         input.addEventListener("keyup", function(event) {
             event.preventDefault();
             if (event.keyCode === 13) {
                 addQuestion();
-                newQuestion("");
             }
         });
+
+        
 
         var saveReport = function() {
             console.log("TBD. Nuværende rapport tekst skrevet:", newReport());
@@ -46,6 +59,9 @@ define(['knockout', 'broadcaster', 'dataservice'], function (ko, bc, dataservice
         return {
             activityName,
             addQuestion,
+            updatenewQuestionText,
+            questionBank,
+            openQuestionBank,
             questionnaires,
             report,
             saveReport,
