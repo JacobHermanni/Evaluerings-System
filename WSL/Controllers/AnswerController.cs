@@ -23,17 +23,17 @@ namespace WebService
             _mapper = mapper;
         }
 
-        [HttpGet(Name = nameof(GetAnswer))]
-        public IActionResult GetAnswer()
-        {
+        //[HttpGet(Name = nameof(GetAnswer))]
+        //public IActionResult GetAnswer()
+        //{
 
-            var answer = _dataService.GetAnswers();
-            if (answer == null) return NotFound();
+        //    var answer = _dataService.GetAnswers();
+        //    if (answer == null) return NotFound();
 
-            var model = _mapper.Map<List<AnswerModel>>(answer);
+        //    var model = _mapper.Map<List<AnswerModel>>(answer);
 
-            return Ok(model);
-        }
+        //    return Ok(model);
+        //}
     }
     /*
     [HttpPut]      
