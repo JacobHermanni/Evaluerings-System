@@ -1,6 +1,10 @@
 ﻿<div>
-
-    <h1>
-        Result page test
-    </h1>
-</div>
+    <h1>Spørgeskema resultater</h1>
+    <div>
+            <ul data-bind="foreach: answers">
+                <li>
+                    <a href="#" data-bind="text: answer, click: $parent.getAnswers"></a>
+                </li>
+            </ul>
+        </div>
+    </div>

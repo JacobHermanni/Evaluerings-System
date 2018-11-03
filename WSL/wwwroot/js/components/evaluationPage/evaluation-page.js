@@ -56,6 +56,16 @@ define(['knockout', 'broadcaster', 'dataservice'], function (ko, bc, dataservice
             console.log("TBD. Nuværende rapport tekst skrevet:", newReport());
         }
 
+
+        var createQuestions = function () {
+                dataservice.postNote(tempFavId, newNoteBody(), data => {
+                    // refresh siden bagefter for at have den rette liste af favorites
+                    refresh(selfUrl);
+                    resetNewNote();
+                });
+            }
+
+
         return {
             activityName,
             addQuestion,

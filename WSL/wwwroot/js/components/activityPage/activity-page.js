@@ -3,6 +3,8 @@
 
         var activities = ko.observable();
 
+        console.log(params);
+
         var getActivities = function () {
             dataservice.getActivities(data => {
                 activities(data);

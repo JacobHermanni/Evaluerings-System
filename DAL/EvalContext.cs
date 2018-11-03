@@ -22,6 +22,8 @@ namespace DAL
 
         public DbSet<Answer> Answer { get; set; }
 
+
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
@@ -30,7 +32,12 @@ namespace DAL
                 "server=localhost;" +
                 "database=evaluation;" +
                 "uid=root;" +
+<<<<<<< Updated upstream
                 "pwd=theis9953;"
+=======
+                "pwd=root050191;"
+
+>>>>>>> Stashed changes
             );
         }
 
