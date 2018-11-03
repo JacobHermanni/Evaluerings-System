@@ -14,7 +14,6 @@
     <Folder Include="wwwroot\js\components\userPage\" />
     <Folder Include="wwwroot\js\components\favoritesPage\" />
     <Folder Include="wwwroot\js\components\historyPage\" />
-    <Folder Include="wwwroot\js\components\coursePage\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,11 +31,6 @@
     <ProjectReference Include="..\DAL\DAL.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Content Remove="wwwroot\js\components\coursePage\course-page.html" />
     <Content Remove="wwwroot\js\components\coursePage\course-page.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="wwwroot\js\components\coursePage\course-page.html" />
-    <None Include="wwwroot\js\components\coursePage\course-page.js" />
   </ItemGroup>
 </Project>
