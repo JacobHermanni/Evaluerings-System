@@ -58,7 +58,7 @@ namespace DAL
             }
         }
 
-        public Question CreateQuestion(int questionID, string description)
+        public Question CreateQuestionInBank(int questionID, string description)
         {
             using (var db = new EvalContext())
             {
@@ -70,7 +70,31 @@ namespace DAL
                 var question = new Question
                 {
                     question_id = questionID,
-                    questionnaire_id = 0,
+                    questionnaire_id = 1337,
+                    description = description
+                };
+
+                db.Question.Add(question);
+
+                db.SaveChanges();
+
+                return question;
+            }
+        }
+
+        public Question CreateQuestionOnQuestionnaire(int questionnaireID, int questionID, string description)
+        {
+            using (var db = new EvalContext())
+            {
+                // tjek for eksisterende question. Hvis der er en så returner null, da redigering ikke skal ske gennem Create (rest)
+                var existingQuestion = db.Question.Find(questionID);
+
+                if (existingQuestion != null) return null;
+
+                var question = new Question
+                {
+                    question_id = questionID,
+                    questionnaire_id = questionnaireID,
                     description = description
                 };
 

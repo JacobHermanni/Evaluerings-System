@@ -48,9 +48,18 @@ namespace WebService
         }
 
         [HttpPost]
-        public IActionResult CreateQuestion([FromBody]Question sentQuestion)
+        public IActionResult CreateQuestionInBank([FromBody]Question sentQuestion)
         {
-            var question = _dataService.CreateQuestion(sentQuestion.question_id, sentQuestion.description);
+            var question = _dataService.CreateQuestionInBank(sentQuestion.question_id, sentQuestion.description);
+
+            if (question == null) return StatusCode(409);
+            return Ok(question);
+        }
+
+        [HttpPost("questionnaire/{questionnaireID}", Name = nameof(CreateQuestionOnQuestionnaire))]
+        public IActionResult CreateQuestionOnQuestionnaire(int questionnaireID, [FromBody]Question sentQuestion)
+        {
+            var question = _dataService.CreateQuestionOnQuestionnaire(questionnaireID, sentQuestion.question_id, sentQuestion.description);
 
             if (question == null) return StatusCode(409);
             return Ok(question);

@@ -12,7 +12,5 @@ namespace WebService.Models
         public int questionnaire_id { get; set; }
 
         public string description { get; set; }
-
-        public List<QuestionOptionModel> questionOptions { get; set; }
     }
 }

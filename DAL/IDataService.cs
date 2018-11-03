@@ -16,10 +16,11 @@ namespace DAL
 
         Question GetQuestion(int questionID);
 
-        Question CreateQuestion(int questionID, string description);
+        Question CreateQuestionInBank(int questionID, string description);
+
+        Question CreateQuestionOnQuestionnaire(int questionnaireID, int questionID, string description);
 
         bool DeleteQuestion(int questionID);
 
-        List<Answer> GetAnswers();
     }
 }

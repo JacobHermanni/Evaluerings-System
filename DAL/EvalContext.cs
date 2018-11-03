@@ -35,11 +35,15 @@ namespace DAL
                 "server=localhost;" +
                 "database=evaluation;" +
                 "uid=root;" +
+<<<<<<< HEAD
 <<<<<<< Updated upstream
                 "pwd=root;"
 =======
                 "pwd=root050191;"
 >>>>>>> Stashed changes
+=======
+                "pwd=theis9953;"
+>>>>>>> 66cea53... * DataService.cs: * IDataService.cs: * WebService.csproj: * QuestionModel.cs: * AnswerController.cs: * QuestionController.cs:
             );
         }
 
