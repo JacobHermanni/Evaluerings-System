@@ -29,6 +29,7 @@ namespace DAL
                     .ToList();
             }
         }
+        
 
         public List<Questionnaire> GetQuestionnaires()
         {
@@ -55,6 +56,13 @@ namespace DAL
             using (var db = new EvalContext())
             {
                 return db.Question.Find(questionID);
+            }
+        }
+        public Evaluation GetEvaluation (int evaluationID)
+        {
+            using (var db = new EvalContext())
+            {
+                return db.Evaluation.Find(evaluationID);
             }
         }
 
@@ -117,6 +125,26 @@ namespace DAL
                     .OrderBy(x => x.question_option_id)
                     .ToList();
             }
+        }
+
+        public Evaluation AddReport(int evaluationID, string report)
+        {
+            using (var db = new EvalContext())
+            {
+                var existingEvaluation = GetEvaluation(evaluationID);
+
+                if (existingEvaluation != null) return null;
+
+                db.Evaluation.Remove(existingEvaluation);
+                existingEvaluation.report = report;
+                db.Evaluation.Add(existingEvaluation);
+                db.SaveChanges();
+
+                // returner den nyoprettede note
+                return existingEvaluation;
+            }
+
+
         }
     }
 }

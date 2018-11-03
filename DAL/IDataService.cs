@@ -18,9 +18,11 @@ namespace DAL
 
         Question CreateQuestion(int questionID, string description);
 
+        Evaluation AddReport(int evaluation_id, string report);
+
         bool DeleteQuestion(int questionID);
 
         List<QuestionOption> GetQuestionOptions();
-
+    
     }
 }
