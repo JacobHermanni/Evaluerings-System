@@ -22,7 +22,7 @@ require.config({
 require(['knockout', 'jquery', 'jqcloud'], function (ko, $) {
     ko.bindingHandlers.cloud = {
         init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
-            // Hvad der først sker når 'cloud' binding benyttes. Word subscriber på en opdateringsfunktion der står nedenfor.
+            // Hvad der fï¿½rst sker nï¿½r 'cloud' binding benyttes. Word subscriber pï¿½ en opdateringsfunktion der stï¿½r nedenfor.
             var words = allBindings.get('cloud').words;
             if (words && ko.isObservable(words)) {
                 words.subscribe(function () {
@@ -30,7 +30,7 @@ require(['knockout', 'jquery', 'jqcloud'], function (ko, $) {
                 });
             }
         },
-        // opdateringsfunktionen, der unwrapper observable arrayet words, så JQCloud kan læse dataen.
+        // opdateringsfunktionen, der unwrapper observable arrayet words, sï¿½ JQCloud kan lï¿½se dataen.
         update: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
             // This will be called once when the binding is first applied to an element,
             // and again whenever any observables/computeds that are accessed change
@@ -41,7 +41,7 @@ require(['knockout', 'jquery', 'jqcloud'], function (ko, $) {
     };
 });
 
-// templates hvor både hmtl og js filer er wrapped i komponenter. Registreret genne ko.components så ko kan genkende dem per navnene. 
+// templates hvor bï¿½de hmtl og js filer er wrapped i komponenter. Registreret genne ko.components sï¿½ ko kan genkende dem per navnene. 
 require(['knockout'], function (ko) {
 
     ko.components.register("all-posts", {
@@ -79,9 +79,9 @@ require(['knockout'], function (ko) {
         template: { require: "text!components/historyPage/history-page_view.html" }
     });
 
-    ko.components.register("course-page", {
-        viewModel: { require: "components/coursePage/course-page" },
-        template: { require: "text!components/coursePage/course-page.html"}
+    ko.components.register("activity-page", {
+        viewModel: { require: "components/activityPage/activity-page" },
+        template: { require: "text!components/activityPage/activity-page.html" }
     });
 
     ko.components.register("result-page", {
@@ -92,6 +92,11 @@ require(['knockout'], function (ko) {
     ko.components.register("answer-page", {
         viewModel: { require: "components/answerPage/answer-page" },
         template: { require: "text!components/answerPage/answer-page.html" }
+    });
+
+    ko.components.register("evaluation-page", {
+        viewModel: { require: "components/evaluationPage/evaluation-page" },
+        template: { require: "text!components/evaluationPage/evaluation-page.html" }
     });
 
 });
@@ -120,7 +125,7 @@ require(["knockout", "jquery", "broadcaster", "jqcloud", "bootstrap"], function 
             var historyState = {};
 
 
-            // gem states fra de undersider, der har pagination og variabler som søgefraser, der skal gemmes til næste besøg af undersiden.
+            // gem states fra de undersider, der har pagination og variabler som sï¿½gefraser, der skal gemmes til nï¿½ste besï¿½g af undersiden.
             broadcaster.subscribe(broadcaster.events.updateState,
                 updateInfo => {
                     console.log("updating state from", updateInfo.from);
@@ -215,7 +220,7 @@ require(["knockout", "jquery", "broadcaster", "jqcloud", "bootstrap"], function 
                             currentParams(viewInfo.id);
                             break;
 
-                        case "course-page":
+                        case "activity-page":
                             break;
 
                         case "result-page":
@@ -223,6 +228,11 @@ require(["knockout", "jquery", "broadcaster", "jqcloud", "bootstrap"], function 
 
                         case "answer-page":
                             break;
+
+                        case "evaluation-page":
+                            currentParams({ activity: viewInfo.activity, from: viewInfo.from });
+                            break;
+
 
                         default:
                             break;

@@ -162,7 +162,7 @@
         });
     }
 
-    var getCourses = function (callback) {
+    var getActivities = function (callback) {
         $.getJSON("http://localhost:5001/api/courses/", function (data) {
             if (data !== undefined) {
                 callback(data);
@@ -171,7 +171,7 @@
     }
 
     return {
-        getCourses,
+        getActivities,
         searchedPosts,
         changePage,
         getQuestion,

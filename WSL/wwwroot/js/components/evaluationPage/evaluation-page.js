@@ -1,13 +1,22 @@
 define(['knockout', 'broadcaster', 'dataservice'], function (ko, bc, dataservice) {
     return function (params) {
-        var courseName = ko.observable();
-        courseName(params.course.course_name);
+        var activityName = ko.observable(params.activity.course_name);
+        var questionnaires = ko.observableArray(params.activity.evaluation.questionnaires);
+        var report = ko.observable(params.activity.evaluation.report);
+        var newReport = ko.observable("");
 
+
+
+        var saveReport = function() {
+            console.log("TBD. Nuværende rapport tekst skrevet:", newReport());
+        }
 
         return {
-            courseName
+            activityName,
+            questionnaires,
+            report,
+            saveReport,
+            newReport
         };
-
     }
-
 });
