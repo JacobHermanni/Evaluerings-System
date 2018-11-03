@@ -99,6 +99,16 @@ namespace DAL
             return false;
         }
 
+        public List<Answer> GetAnswers()
+        {
+            using (var db = new EvalContext())
+            {
+                return db.Answer
+                    .OrderBy(x => x.answer_id)
+                    .ToList();
+            }
+        }
+
     }
 }
 
