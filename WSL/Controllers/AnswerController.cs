@@ -23,30 +23,24 @@ namespace WebService
             _mapper = mapper;
         }
 
-        //[HttpGet(Name = nameof(GetAnswer))]
-        //public IActionResult GetAnswer()
-        //{
+        [HttpGet(Name = nameof(GetAnswer))]
+        public IActionResult GetAnswer()
+        {
 
-        //    var answer = _dataService.GetAnswers();
-        //    if (answer == null) return NotFound();
+            var answer = _dataService.GetAnswers();
+            if (answer == null) return NotFound();
 
-        //    var model = _mapper.Map<List<AnswerModel>>(answer);
+            var model = _mapper.Map<List<AnswerModel>>(answer);
 
-<<<<<<< HEAD
-        //    return Ok(model);
-        //}
-=======
             return Ok(model);
         }
-        [HttpPost]
-        public IActionResult CreateAnswer([FromBody]AnswerModel answerModel)
+         
+	    [HttpPost]
+		public IActionResult CreateAnswer([FromBody]AnswerModel answerModel)
         {
-            _dataService.CreateAnswer(answerModel.question_id, answerModel.questionnaire_id, answerModel.answer);
+			_dataService.CreateAnswer(answerModel.question_id, answerModel.questionnaire_id, answerModel.answer);
 
             return Ok();
-        }
->>>>>>> ef5a394... create answars database.
-    }
-   
-           
+        } 
+	}
 }
