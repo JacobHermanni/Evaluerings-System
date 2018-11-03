@@ -15,19 +15,5 @@ namespace DAL.Models
 
         public string description { get; set; }
 
-        public List<QuestionOption> questionOptions
-        {
-            get
-            {
-                using (var db = new EvalContext())
-                {
-                    var getQuestionsOptions = db.Question_Option.Where(x => x.question_id == question_id);
-                    if (!getQuestionsOptions.Any()) return null;
-
-                    return getQuestionsOptions.ToList();
-                }
-            }
-            set { }
-        }
     }
 }

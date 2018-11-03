@@ -20,8 +20,6 @@ namespace DAL
 
         public DbSet<Question> Question { get; set; }
 
-        public DbSet<QuestionOption> Question_Option { get; set; }
-
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -31,11 +29,15 @@ namespace DAL
                 "server=localhost;" +
                 "database=evaluation;" +
                 "uid=root;" +
+<<<<<<< HEAD
 <<<<<<< Updated upstream
                 "pwd=theis9953;"
 =======
                 "pwd=root050191;"
 >>>>>>> Stashed changes
+=======
+                "pwd=root;"
+>>>>>>> 458ccfa... * DAL.csproj: deleted question option
             );
         }
 

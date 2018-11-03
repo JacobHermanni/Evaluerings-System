@@ -11,14 +11,14 @@ using WebService.Models;
 namespace WebService
 {
     [Route("/api/questions")]
-    public class NoteController : Controller
+    public class QuestionController : Controller
     {
         
         private readonly IDataService _dataService;
         private readonly IMapper _mapper;
 
 
-        public NoteController(IDataService dataService, IMapper mapper)
+        public QuestionController(IDataService dataService, IMapper mapper)
         {
             _dataService = dataService;
             _mapper = mapper;
@@ -50,11 +50,10 @@ namespace WebService
         [HttpPost]
         public IActionResult CreateQuestion([FromBody]Question sentQuestion)
         {
-            //var question = _dataService.CreateQuestion(sentQuestion.question_id, sentQuestion.description);
-            return Ok(sentQuestion);
+            var question = _dataService.CreateQuestion(sentQuestion.question_id, sentQuestion.description);
 
-            //if (question == null) return StatusCode(409);
-            //return Created(Url.Link(nameof(GetQuestion), new {questionID = question.question_id }), question);
+            if (question == null) return StatusCode(409);
+            return Ok(question);
         }
 
         [HttpDelete("{questionID}", Name = nameof(DeleteQuestion))]

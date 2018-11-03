@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -63,7 +63,7 @@ namespace DAL
             using (var db = new EvalContext())
             {
                 // tjek for eksisterende question. Hvis der er en så returner null, da redigering ikke skal ske gennem Create (rest)
-                var existingQuestion = GetQuestion(questionID);
+                var existingQuestion = db.Question.Find(questionID);
 
                 if (existingQuestion != null) return null;
 
@@ -71,16 +71,14 @@ namespace DAL
                 {
                     question_id = questionID,
                     questionnaire_id = 0,
-                    description = description,
-                    questionOptions = null
+                    description = description
                 };
 
                 db.Question.Add(question);
 
                 db.SaveChanges();
 
-                // returner den nyoprettede note
-                return GetQuestion(questionID);
+                return question;
             }
         }
 
@@ -92,14 +90,6 @@ namespace DAL
 
                 if (existingQuestion != null)
                 {
-                    var children = db.Question_Option.Where(x => x.question_id == questionID).ToList();
-                    if(children.Count != 0)
-                    {
-                        foreach(var child in children)
-                        {
-                            db.Question_Option.Remove(child);
-                        }
-                    }
                     db.Question.Remove(existingQuestion);
                     db.SaveChanges();
                     return true;
@@ -108,6 +98,7 @@ namespace DAL
             // statuscode kræver false hvis der ikke kunne findes noget at slette og true, hvis der var noget at slette som slettes.
             return false;
         }
+<<<<<<< HEAD
 
         public List<QuestionOption> GetQuestionOptions()
         {
@@ -128,6 +119,8 @@ namespace DAL
                     .ToList();
             }
         }
+=======
+>>>>>>> 458ccfa... * DAL.csproj: deleted question option
     }
 }
 
