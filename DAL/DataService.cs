@@ -118,6 +118,16 @@ namespace DAL
                     .ToList();
             }
         }
+
+        public List<Answer> GetAnswers()
+        {
+            using (var db = new EvalContext())
+            {
+                return db.Answer
+                    .OrderBy(x => x.answer_id)
+                    .ToList();
+            }
+        }
     }
 }
 

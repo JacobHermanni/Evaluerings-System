@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Net.Http.Headers;
 using DAL.Models;
 
@@ -22,5 +22,9 @@ namespace DAL
 
         List<QuestionOption> GetQuestionOptions();
 
+<<<<<<< HEAD
+=======
+        List<Answer> GetAnswers();
+>>>>>>> c2dfc4d... commit answer DAL/WSL get
     }
 }

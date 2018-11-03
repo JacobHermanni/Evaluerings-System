@@ -59,6 +59,8 @@ namespace WebService
                     .ReverseMap();
                 cfg.CreateMap<QuestionOption, QuestionOptionModel>()
                     .ReverseMap();
+                cfg.CreateMap<Answer, AnswerModel>()
+                    .ReverseMap();
             });
 
             return config.CreateMapper();

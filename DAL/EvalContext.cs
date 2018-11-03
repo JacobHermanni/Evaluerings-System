@@ -31,11 +31,15 @@ namespace DAL
                 "server=localhost;" +
                 "database=evaluation;" +
                 "uid=root;" +
+<<<<<<< Updated upstream
                 "pwd=theis9953;"
+=======
+                "pwd=root050191;"
+>>>>>>> Stashed changes
             );
         }
 
-        // før modellerne i EF er lavet kan vi override nogle selvdefinerede regler mm.
+        // fé´• modellerne i EF er lavet kan vi override nogle selvdefinerede regler mm.
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
