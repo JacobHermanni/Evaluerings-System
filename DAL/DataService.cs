@@ -92,6 +92,14 @@ namespace DAL
 
                 if (existingQuestion != null)
                 {
+                    var children = db.Question_Option.Where(x => x.question_id == questionID).ToList();
+                    if(children.Count != 0)
+                    {
+                        foreach(var child in children)
+                        {
+                            db.Question_Option.Remove(child);
+                        }
+                    }
                     db.Question.Remove(existingQuestion);
                     db.SaveChanges();
                     return true;
