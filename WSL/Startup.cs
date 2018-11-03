@@ -57,13 +57,8 @@ namespace WebService
                     .ReverseMap();
                 cfg.CreateMap<Question, QuestionModel>()
                     .ReverseMap();
-<<<<<<< HEAD
-                cfg.CreateMap<QuestionOption, QuestionOptionModel>()
-                    .ReverseMap();
                 cfg.CreateMap<Answer, AnswerModel>()
                     .ReverseMap();
-=======
->>>>>>> 458ccfa... * DAL.csproj: deleted question option
             });
 
             return config.CreateMapper();

@@ -29,15 +29,7 @@ namespace DAL
                 "server=localhost;" +
                 "database=evaluation;" +
                 "uid=root;" +
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-                "pwd=theis9953;"
-=======
-                "pwd=root050191;"
->>>>>>> Stashed changes
-=======
                 "pwd=root;"
->>>>>>> 458ccfa... * DAL.csproj: deleted question option
             );
         }
 

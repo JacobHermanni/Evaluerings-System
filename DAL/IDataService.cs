@@ -20,11 +20,6 @@ namespace DAL
 
         bool DeleteQuestion(int questionID);
 
-<<<<<<< HEAD
-        List<QuestionOption> GetQuestionOptions();
-
         List<Answer> GetAnswers();
-=======
->>>>>>> 458ccfa... * DAL.csproj: deleted question option
     }
 }

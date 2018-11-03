@@ -98,29 +98,7 @@ namespace DAL
             // statuscode kræver false hvis der ikke kunne findes noget at slette og true, hvis der var noget at slette som slettes.
             return false;
         }
-<<<<<<< HEAD
 
-        public List<QuestionOption> GetQuestionOptions()
-        {
-            using (var db = new EvalContext())
-            {
-                return db.Question_Option
-                    .OrderBy(x => x.question_option_id)
-                    .ToList();
-            }
-        }
-
-        public List<Answer> GetAnswers()
-        {
-            using (var db = new EvalContext())
-            {
-                return db.Answer
-                    .OrderBy(x => x.answer_id)
-                    .ToList();
-            }
-        }
-=======
->>>>>>> 458ccfa... * DAL.csproj: deleted question option
     }
 }
 
