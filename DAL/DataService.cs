@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -51,6 +51,18 @@ namespace DAL
             }
         }
 
+        public List<Question> GetQuestionsFromQuestionBank(int questionnaireID)
+        {
+            using (var db = new EvalContext())
+            {
+                return db.Question
+                     .Where(q => q.questionnaire_id == questionnaireID)
+                    .OrderBy(x => x.question_id)
+                    .ToList();
+            }
+        }
+
+
         public Question GetQuestion(int questionID)
         {
             using (var db = new EvalContext())
@@ -66,29 +78,51 @@ namespace DAL
             }
         }
 
-        public Question CreateQuestion(int questionID, string description)
+        public Question CreateQuestionInBank(int questionID, string description)
         {
             using (var db = new EvalContext())
             {
                 // tjek for eksisterende question. Hvis der er en så returner null, da redigering ikke skal ske gennem Create (rest)
-                var existingQuestion = GetQuestion(questionID);
+                var existingQuestion = db.Question.Find(questionID);
 
                 if (existingQuestion != null) return null;
 
                 var question = new Question
                 {
                     question_id = questionID,
-                    questionnaire_id = 0,
-                    description = description,
-                    questionOptions = null
+                    questionnaire_id = 1337,
+                    description = description
                 };
 
                 db.Question.Add(question);
 
                 db.SaveChanges();
 
-                // returner den nyoprettede note
-                return GetQuestion(questionID);
+                return question;
+            }
+        }
+
+        public Question CreateQuestionOnQuestionnaire(int questionnaireID, int questionID, string description)
+        {
+            using (var db = new EvalContext())
+            {
+                // tjek for eksisterende question. Hvis der er en så returner null, da redigering ikke skal ske gennem Create (rest)
+                var existingQuestion = db.Question.Find(questionID);
+
+                if (existingQuestion != null) return null;
+
+                var question = new Question
+                {
+                    question_id = questionID,
+                    questionnaire_id = questionnaireID,
+                    description = description
+                };
+
+                db.Question.Add(question);
+
+                db.SaveChanges();
+
+                return question;
             }
         }
 
@@ -100,14 +134,6 @@ namespace DAL
 
                 if (existingQuestion != null)
                 {
-                    var children = db.Question_Option.Where(x => x.question_id == questionID).ToList();
-                    if(children.Count != 0)
-                    {
-                        foreach(var child in children)
-                        {
-                            db.Question_Option.Remove(child);
-                        }
-                    }
                     db.Question.Remove(existingQuestion);
                     db.SaveChanges();
                     return true;
@@ -117,12 +143,12 @@ namespace DAL
             return false;
         }
 
-        public List<QuestionOption> GetQuestionOptions()
+        public List<Answer> GetAnswers()
         {
             using (var db = new EvalContext())
             {
-                return db.Question_Option
-                    .OrderBy(x => x.question_option_id)
+                return db.Answer
+                    .OrderBy(x => x.answer_id)
                     .ToList();
             }
         }
@@ -131,21 +157,45 @@ namespace DAL
         {
             using (var db = new EvalContext())
             {
-                var existingEvaluation = GetEvaluation(evaluationID);
-
-                if (existingEvaluation != null) return null;
-
-                db.Evaluation.Remove(existingEvaluation);
+                //var existingEvaluation = db.Evaluation.AsNoTracking().Where(e => e.evaluation_id == evaluationID).First();
+                var existingEvaluation = db.Evaluation.Find(evaluationID);
                 existingEvaluation.report = report;
-                db.Evaluation.Add(existingEvaluation);
+
+                db.Evaluation.Attach(existingEvaluation);
+                var entry = db.Entry(existingEvaluation);
+                entry.Property(x => x.report).IsModified = true;
+
                 db.SaveChanges();
 
-                // returner den nyoprettede note
+                
                 return existingEvaluation;
             }
 
 
         }
+
+        public void  CreateAnswer(int question_id, int questionnaire_id, int answer)
+        {
+            using (var db = new EvalContext())
+            {
+                var studyanswer = new Answer
+                {
+                   
+                    question_id = question_id,
+                    questionnaire_id = questionnaire_id,
+                    answer = answer
+                   
+                };
+
+                db.Answer.Add(studyanswer);
+
+                db.SaveChanges();
+
+                // returner den nyoprettede answer
+                //return GetAnswers();
+            }
+        }
+
     }
 }
 

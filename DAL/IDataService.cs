@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Net.Http.Headers;
 using DAL.Models;
 
@@ -16,13 +16,18 @@ namespace DAL
 
         Question GetQuestion(int questionID);
 
-        Question CreateQuestion(int questionID, string description);
+        Question CreateQuestionInBank(int questionID, string description);
+
+        Question CreateQuestionOnQuestionnaire(int questionnaireID, int questionID, string description);
+
+        List<Question> GetQuestionsFromQuestionBank(int questionnaireID);
 
         Evaluation AddReport(int evaluation_id, string report);
 
         bool DeleteQuestion(int questionID);
 
-        List<QuestionOption> GetQuestionOptions();
-    
+        List<Answer> GetAnswers();
+
+        void CreateAnswer(int question_id, int questionnaire_id, int answer);
     }
 }

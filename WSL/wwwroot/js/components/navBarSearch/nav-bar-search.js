@@ -29,9 +29,9 @@
             { name: 'Posts', view: 'all-posts' },
             { name: 'Favorites', view: 'favorites-page' },
             { name: 'History', view: 'history-page' },
-            { name: 'Courses', view: 'course-page' },
-            { name: 'Results', view: 'result-page' },
-            { name: 'Answers', view: 'answer-page' }
+            { name: 'Aktiviteter', view: 'activity-page' },
+            { name: 'Resultater', view: 'result-page' },
+            { name: 'Besvarelse', view: 'answer-page' }
         ];
 
         var isActive = function (menu) {

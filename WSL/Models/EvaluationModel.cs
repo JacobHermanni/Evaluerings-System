@@ -13,7 +13,7 @@ namespace WebService.Models
 
         public string report { get; set; }
 
-        public QuestionnaireModel questionnaire { get; set; }
+        public List<QuestionnaireModel> questionnaires { get; set; }
         
     }
 }

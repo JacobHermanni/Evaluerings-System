@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -57,7 +57,7 @@ namespace WebService
                     .ReverseMap();
                 cfg.CreateMap<Question, QuestionModel>()
                     .ReverseMap();
-                cfg.CreateMap<QuestionOption, QuestionOptionModel>()
+                cfg.CreateMap<Answer, AnswerModel>()
                     .ReverseMap();
             });
 
