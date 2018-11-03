@@ -37,12 +37,16 @@ namespace DAL
                 "server=localhost;" +
                 "database=evaluation;" +
                 "uid=root;" +
+<<<<<<< HEAD
 <<<<<<< Updated upstream
                 "pwd=root;"
 =======
                 "pwd=root050191;"
 
 >>>>>>> Stashed changes
+=======
+                "pwd=theis9953;"
+>>>>>>> ecd83ff... * DataService.cs: created question bank API
             );
         }
 

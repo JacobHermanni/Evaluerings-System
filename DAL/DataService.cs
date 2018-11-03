@@ -50,6 +50,18 @@ namespace DAL
             }
         }
 
+        public List<Question> GetQuestionsFromQuestionBank(int questionnaireID)
+        {
+            using (var db = new EvalContext())
+            {
+                return db.Question
+                     .Where(q => q.questionnaire_id == questionnaireID)
+                    .OrderBy(x => x.question_id)
+                    .ToList();
+            }
+        }
+
+
         public Question GetQuestion(int questionID)
         {
             using (var db = new EvalContext())

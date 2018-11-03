@@ -39,7 +39,4 @@
     <None Include="wwwroot\js\components\coursePage\course-page.html" />
     <None Include="wwwroot\js\components\coursePage\course-page.js" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="Models\QuestionOptionModel.cs" />
-  </ItemGroup>
 </Project>

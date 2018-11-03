@@ -20,6 +20,8 @@ namespace DAL
 
         Question CreateQuestionOnQuestionnaire(int questionnaireID, int questionID, string description);
 
+        List<Question> GetQuestionsFromQuestionBank(int questionnaireID);
+
         bool DeleteQuestion(int questionID);
 
         List<Answer> GetAnswers();
