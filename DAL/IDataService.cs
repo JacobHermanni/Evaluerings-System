@@ -22,5 +22,11 @@ namespace DAL
 
         bool DeleteQuestion(int questionID);
 
+<<<<<<< HEAD
+=======
+        List<Answer> GetAnswers();
+
+        void CreateAnswer(int question_id, int questionnaire_id, int answer);
+>>>>>>> ef5a394... create answars database.
     }
 }

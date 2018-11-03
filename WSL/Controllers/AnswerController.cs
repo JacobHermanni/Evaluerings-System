@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -32,17 +32,21 @@ namespace WebService
 
         //    var model = _mapper.Map<List<AnswerModel>>(answer);
 
+<<<<<<< HEAD
         //    return Ok(model);
         //}
-    }
-    /*
-    [HttpPut]      
-            public IActionResult UpdateNote([FromBody]Note sentNote)
-            {
-               var note = _dataService.UpdateNote(sentNote.favorite_id, sentNote.body);
+=======
+            return Ok(model);
+        }
+        [HttpPost]
+        public IActionResult CreateAnswer([FromBody]AnswerModel answerModel)
+        {
+            _dataService.CreateAnswer(answerModel.question_id, answerModel.questionnaire_id, answerModel.answer);
 
-               if (note == null) return NotFound();
-              return Created(Url.Link(nameof(GetNote), new {favId = note.favorite_id}), note);
-            }
-            */
+            return Ok();
+        }
+>>>>>>> ef5a394... create answars database.
+    }
+   
+           
 }

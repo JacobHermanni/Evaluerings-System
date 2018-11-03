@@ -12,7 +12,7 @@ namespace DAL.Models
         [Key]
         public int answer_id { get; set; }
 
-        public int evaluation_id { get; set; }
+        public int questionnaire_id { get; set; }
 
         public int answer { get; set; }
 

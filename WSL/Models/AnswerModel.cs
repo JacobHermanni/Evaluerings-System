@@ -10,6 +10,13 @@ namespace WebService.Models
     {
         public int answer_id { get; set; }
 
+        public int questionnaire_id { get; set; }
+
         public int answer { get; set; }
+
+        public int student_id { get; set; }
+
+        public int question_id { get; set; }
+
     }
 }

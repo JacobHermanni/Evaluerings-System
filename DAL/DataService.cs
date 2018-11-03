@@ -133,6 +133,28 @@ namespace DAL
             }
         }
 
+        public void  CreateAnswer(int question_id, int questionnaire_id, int answer)
+        {
+            using (var db = new EvalContext())
+            {
+                var studyanswer = new Answer
+                {
+                   
+                    question_id = question_id,
+                    questionnaire_id = questionnaire_id,
+                    answer = answer
+                   
+                };
+
+                db.Answer.Add(studyanswer);
+
+                db.SaveChanges();
+
+                // returner den nyoprettede answer
+                //return GetAnswers();
+            }
+        }
+
     }
 }
 
