@@ -170,8 +170,28 @@
         });
     }
 
+    var postQuestionOnQuestionnaire = function (questionnaireID, questionString, callback) {
+        var jsonData = JSON.stringify({ description: questionString });
+        $.ajax("http://localhost:5001/api/questions/questionnaire/" + questionnaireID, {
+            data: jsonData,
+            contentType: 'application/json',
+            type: 'POST',
+            success: callback
+        });
+    }
+
+    var getQuestionsOnQuestionnaire = function (questionnaireID, callback) {
+        $.getJSON("http://localhost:5001/api/questionBank/" + questionnaireID, function (data) {
+            if (data !== undefined) {
+                callback(data);
+            }
+        });
+    }
+
     return {
         getActivities,
+        postQuestionOnQuestionnaire,
+        getQuestionsOnQuestionnaire,
         searchedPosts,
         changePage,
         getQuestion,

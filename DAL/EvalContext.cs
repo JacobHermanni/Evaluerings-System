@@ -30,7 +30,7 @@ namespace DAL
                 "server=localhost;" +
                 "database=evaluation;" +
                 "uid=root;" +
-                "pwd=root;"
+                "pwd=theis9953;"
             );
         }
 
