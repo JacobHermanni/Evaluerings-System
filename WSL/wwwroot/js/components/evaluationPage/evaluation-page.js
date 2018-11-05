@@ -18,14 +18,14 @@ define(['knockout', 'broadcaster', 'dataservice'], function (ko, bc, dataservice
                 var lastQuestionnaire = params.activity.evaluation.questionnaires[n].questionnaire_id;
                 var current = params.activity.course_id;
 
-                dataservice.postQuestionOnQuestionnaire(lastQuestionnaire, newQuestion());
-
-                dataservice.getActivities(data => {
-                    for (var i = 0, len = data.length; i < len; i++) {
-                        if (data[i].course_id === current) {
-                            questionnaires(data[i].evaluation.questionnaires)
+                dataservice.postQuestionOnQuestionnaire(lastQuestionnaire, newQuestion(), function (){
+                    dataservice.getActivities(data => {
+                        for (var i = 0, len = data.length; i < len; i++) {
+                            if (data[i].course_id === current) {
+                                questionnaires(data[i].evaluation.questionnaires)
+                            }
                         }
-                    }
+                    });
                 });
 
                 newQuestion("");
