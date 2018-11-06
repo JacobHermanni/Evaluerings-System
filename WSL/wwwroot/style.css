@@ -1,4 +1,12 @@
-﻿h1 {
+﻿/* --- Evaluering --- */
+.questionnaire-list-group {
+    width: 100%;
+    display: inline-block;
+}
+
+/* --- END Evaluering --- */
+
+h1 {
     text-align: center;
 }
 

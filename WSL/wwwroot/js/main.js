@@ -107,6 +107,7 @@ require(["knockout", "jquery", "broadcaster", "jqcloud", "bootstrap"], function 
 
         var vm = (function () {
 
+            var studentId = ko.observable("1");
             var currentView = ko.observable('front-page');
             var navSearch = ko.observable('nav-bar-search');
             var currentParams = ko.observable(null);
@@ -227,6 +228,7 @@ require(["knockout", "jquery", "broadcaster", "jqcloud", "bootstrap"], function 
                             break;
 
                         case "answer-page":
+                            currentParams({ studentId: studentId(), from: viewInfo.from });
                             break;
 
                         case "evaluation-page":
@@ -247,7 +249,8 @@ require(["knockout", "jquery", "broadcaster", "jqcloud", "bootstrap"], function 
                 currentView,
                 switchComponent,
                 currentParams,
-                navSearch
+                navSearch,
+                studentId
                 // obsolete da de ikke er data-bindings
                 //favoritesState,
                 //allPostsState,
