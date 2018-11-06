@@ -14,11 +14,35 @@
             </div>
         </div>
     </div>
+    <div>
+        <div class="form-group">
+            <label>Udnyt dette felt hvis du ønsker, at tilføje et spørgsmål til spørgeskemaet ovenfor</label>
+            <input data-bind="textInput: newQuestion" class="form-control" rows="5" id="inputQuestion"></input>
+        </div>
+
+        <div class="dropdown">
+            <button data-bind="click: openQuestionBank" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Se tidligere anvendte spørgsmål
+                <span class="caret"></span>
+            </button>
+            <ul data-bind="foreach: $data.questionBank" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a data-bind="text: $data.description, click: $parent.updatenewQuestionText($data)"></a></li>
+            </ul>
+        </div>
+
+        <br/>
+
+        <button data-bind="click: addQuestion" type="button" id="inputButton" class="btn btn-primary">
+            Tilføj spørgsmål
+        </button>
+
+    </div>
     <br />
     <h3>Opsummerende rapport:</h3>
     <br />
     <span data-bind="text: report"></span>
-    <div data-bind="visible: report() === null">Tilføj rapport her.
+    <div data-bind="visible: report() === null">
+        Tilføj rapport her.
         <br />
         <textarea data-bind="textInput: newReport" class="form-control" rows="5"></textarea>
         <button data-bind="click: saveReport">Tilføj rapport</button>

@@ -29,6 +29,7 @@ namespace DAL
                     .ToList();
             }
         }
+        
 
         public List<Questionnaire> GetQuestionnaires()
         {
@@ -50,11 +51,30 @@ namespace DAL
             }
         }
 
+        public List<Question> GetQuestionsFromQuestionBank(int questionnaireID)
+        {
+            using (var db = new EvalContext())
+            {
+                return db.Question
+                     .Where(q => q.questionnaire_id == questionnaireID)
+                    .OrderBy(x => x.question_id)
+                    .ToList();
+            }
+        }
+
+
         public Question GetQuestion(int questionID)
         {
             using (var db = new EvalContext())
             {
                 return db.Question.Find(questionID);
+            }
+        }
+        public Evaluation GetEvaluation (int evaluationID)
+        {
+            using (var db = new EvalContext())
+            {
+                return db.Evaluation.Find(evaluationID);
             }
         }
 
@@ -130,6 +150,49 @@ namespace DAL
                 return db.Answer
                     .OrderBy(x => x.answer_id)
                     .ToList();
+            }
+        }
+
+        public Evaluation AddReport(int evaluationID, string report)
+        {
+            using (var db = new EvalContext())
+            {
+                //var existingEvaluation = db.Evaluation.AsNoTracking().Where(e => e.evaluation_id == evaluationID).First();
+                var existingEvaluation = db.Evaluation.Find(evaluationID);
+                existingEvaluation.report = report;
+
+                db.Evaluation.Attach(existingEvaluation);
+                var entry = db.Entry(existingEvaluation);
+                entry.Property(x => x.report).IsModified = true;
+
+                db.SaveChanges();
+
+                
+                return existingEvaluation;
+            }
+
+
+        }
+
+        public void  CreateAnswer(int question_id, int questionnaire_id, int answer)
+        {
+            using (var db = new EvalContext())
+            {
+                var studyanswer = new Answer
+                {
+                   
+                    question_id = question_id,
+                    questionnaire_id = questionnaire_id,
+                    answer = answer
+                   
+                };
+
+                db.Answer.Add(studyanswer);
+
+                db.SaveChanges();
+
+                // returner den nyoprettede answer
+                //return GetAnswers();
             }
         }
 

@@ -13,9 +13,9 @@ namespace DAL.Models
 
         public int course_id { get; set; }
 
-        //TODO: remove this. Instead link to evaluation with id from report table containing cleartext and file/path to file(?)
         public string report { get; set; }
 
+        [NotMapped]
         public List<Questionnaire> questionnaires
         {
             get

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -23,26 +23,24 @@ namespace WebService
             _mapper = mapper;
         }
 
-        //[HttpGet(Name = nameof(GetAnswer))]
-        //public IActionResult GetAnswer()
-        //{
+        [HttpGet(Name = nameof(GetAnswer))]
+        public IActionResult GetAnswer()
+        {
 
-        //    var answer = _dataService.GetAnswers();
-        //    if (answer == null) return NotFound();
+            var answer = _dataService.GetAnswers();
+            if (answer == null) return NotFound();
 
-        //    var model = _mapper.Map<List<AnswerModel>>(answer);
+            var model = _mapper.Map<List<AnswerModel>>(answer);
 
-        //    return Ok(model);
-        //}
-    }
-    /*
-    [HttpPut]      
-            public IActionResult UpdateNote([FromBody]Note sentNote)
-            {
-               var note = _dataService.UpdateNote(sentNote.favorite_id, sentNote.body);
+            return Ok(model);
+        }
+         
+	    [HttpPost]
+		public IActionResult CreateAnswer([FromBody]AnswerModel answerModel)
+        {
+			_dataService.CreateAnswer(answerModel.question_id, answerModel.questionnaire_id, answerModel.answer);
 
-               if (note == null) return NotFound();
-              return Created(Url.Link(nameof(GetNote), new {favId = note.favorite_id}), note);
-            }
-            */
+            return Ok();
+        } 
+	}
 }

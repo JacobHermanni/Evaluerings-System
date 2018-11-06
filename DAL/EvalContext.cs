@@ -22,6 +22,8 @@ namespace DAL
 
         public DbSet<Answer> Answer { get; set; }
 
+
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
@@ -34,7 +36,6 @@ namespace DAL
             );
         }
 
-        // f鴕 modellerne i EF er lavet kan vi override nogle selvdefinerede regler mm.
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

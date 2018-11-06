@@ -20,7 +20,14 @@ namespace DAL
 
         Question CreateQuestionOnQuestionnaire(int questionnaireID, int questionID, string description);
 
+        List<Question> GetQuestionsFromQuestionBank(int questionnaireID);
+
+        Evaluation AddReport(int evaluation_id, string report);
+
         bool DeleteQuestion(int questionID);
 
+        List<Answer> GetAnswers();
+
+        void CreateAnswer(int question_id, int questionnaire_id, int answer);
     }
 }
