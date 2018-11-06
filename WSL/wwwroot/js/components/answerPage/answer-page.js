@@ -5,13 +5,19 @@
         var currentActivity = ko.observable();
         var questionnaires = ko.observable();
         var questions = ko.observableArray([]);
+        var error = ko.observable();
 
         // initate questions
         var loadQuestions = function () {
             questions([]);
             questionnaires().forEach(questionnaire => {
                 questionnaire.questions.forEach(question => {
-                    questions.push({ id: ko.observable(question.question_id), question: question.description });
+                    questions.push({
+                        id: question.question_id,
+                        question: question.description,
+                        answer: "",
+                        questionnaire_id: questionnaire.questionnaire_id
+                    });
                 });
             });
         }
@@ -24,22 +30,39 @@
             { key: "5", value: "5" }
         ];
 
-        var printAnswers = function () {
-            questions().forEach(element => {
-                console.log(element);
+        var submitAnswers = function () {
+            var answers = [];
+            var error = false;
+
+            questions().forEach(question => {
+                if (!question.answer) {
+                    error = true;
+                    return;
+                }
+                answers.push({
+                    question_id: question.id,
+                    questionnaire_id: question.questionnaire_id,
+                    answer: Number(question.answer),
+                    answer_id: 0,
+                    student_id: 0
+                })
             });
+
+            if (error) {
+                this.error(true);
+            }
+            else {
+                this.error(null);
+
+                answers.forEach(answer => {
+                    dataservice.postAnswer(answer, () => {});
+                })
+
+                bc.publish(bc.events.changeView, { to: "result-page", from: "answer", activity: currentActivity() });
+            }
+
         };
 
-
-        var isChecked = function () {
-            console.log(this);
-            return true;
-        };
-
-        var chooseAnswer = function (value) {
-            console.log("value should be value of 2:", value);
-            console.log("this should be this:", this);
-        };
 
         var back = function () {
             currentActivity(null);
@@ -59,6 +82,7 @@
             currentActivity(this);
             questionnaires(this.evaluation.questionnaires);
             loadQuestions();
+            error(null);
         };
 
         return {
@@ -67,11 +91,10 @@
             currentActivity,
             questionnaires,
             back,
-            chooseAnswer,
-            isChecked,
             questions,
             answerOptions,
-            printAnswers
+            submitAnswers,
+            error
         };
 
     }

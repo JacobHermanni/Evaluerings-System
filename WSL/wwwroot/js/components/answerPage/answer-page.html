@@ -8,71 +8,40 @@
         </ul>
     </div>
 
-    <div data-bind="visible: currentActivity() != null">
+    <div class="col-sm-12" data-bind="visible: currentActivity() != null">
         <h3>
             <div data-bind="with: currentActivity">
                 Evaluering for
                 <span data-bind="text: $data.course_name"></span>
             </div>
         </h3>
-        <ol data-bind="foreach: questions">
-            <li>
-                <span data-bind="text: $data.question"></span>
-                <span data-bind="foreach: $parent.answerOptions">
+        <ol class="list-group" data-bind="foreach: questions">
+            <li class="col-sm-12 list-group-item">
+                <span class="col-sm-9" data-bind="text: $data.question"></span>
+                <span class="col-sm-3" data-bind="foreach: $parent.answerOptions">
                     <input type="radio" data-bind="value: key, attr : {name: $parent.id}, checked: $parent.answer" />
                     <span data-bind="text: value"></span>
                 </span>
             </li>
         </ol>
-        <button data-bind="click: printAnswers">click for answer print</button>
-        <!--<div data-bind="foreach: questionnaires">
-            <br />
-            <span data-bind="text: $data.description"></span>
-            
-             <div data-bind="foreach: $data.questions">
-                <div class="list-group top-buffer">
-                    <div class="list-group-item aquestionnaire-list-group">
-                        <div class="container">
-                            <div class="row">
-
-                                 <div class="pull-left" data-bind="text: $data.description"></div>
-                                 <div class=""> 
-                                <label data-bind="text: $data.description" class="labeltext"></label>
-
-                                <div class="form-check-inline">
-                                     <label class="customradio"><span class="radiotextsty">1</span>
-                                        <span data-bind="click: $component.chooseAnswer.bind($data, 2)">
-                                            <input type="radio" data-bind="attr: {name: $data.question_id}">
-                                        </span>
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="customradio"><span class="radiotextsty">2</span>
-                                        <input type="radio" data-bind="attr: {name: $data.question_id}, 
-                                        value: 2, 
-                                        click: $component.chooseAnswer.bind(this, 2)">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="customradio"><span class="radiotextsty">3</span>
-                                        <input type="radio" data-bind="attr: {name: $data.question_id}, click: $component.chooseAnswer">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="customradio"><span class="radiotextsty">4</span>
-                                        <input type="radio" data-bind="attr: {name: $data.question_id}, click: $component.chooseAnswer">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="customradio"><span class="radiotextsty">5</span>
-                                        <input type="radio" data-bind="attr: {name: $data.question_id}, click: $component.chooseAnswer">
-                                        <span class="checkmark"></span>
-                                    </label> 
-
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-            <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <span class="text-danger" data-bind="visible: error() != null, text: 'Besvar alle spørgsmål før du afslutter.'"></span>
+        <br />
+        <button class="btn" data-bind="click: submitAnswers">Klik for at besvare</button>
+        <br />
+        <br />
         <button class="btn" data-bind="click: back">Tilbage</button>
     </div>
 </div>

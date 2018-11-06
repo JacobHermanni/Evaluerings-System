@@ -9,7 +9,7 @@ using WebService.Models;
 
 namespace WebService
 {
-    [Route("/api/answer")]
+    [Route("/api/answers")]
     public class AnswerController : Controller
     {
 
@@ -34,11 +34,11 @@ namespace WebService
 
             return Ok(model);
         }
-         
-	    [HttpPost]
-		public IActionResult CreateAnswer([FromBody]AnswerModel answerModel)
+
+        [HttpPost]
+        public IActionResult CreateAnswer([FromBody]AnswerModel answerModel)
         {
-			_dataService.CreateAnswer(answerModel.question_id, answerModel.questionnaire_id, answerModel.answer);
+            _dataService.CreateAnswer(answerModel.question_id, answerModel.questionnaire_id, answerModel.answer);
 
             return Ok();
         } 

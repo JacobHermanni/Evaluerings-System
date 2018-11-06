@@ -225,6 +225,7 @@ require(["knockout", "jquery", "broadcaster", "jqcloud", "bootstrap"], function 
                             break;
 
                         case "result-page":
+                            currentParams({ activity: viewInfo.activity, from: viewInfo.from });
                             break;
 
                         case "answer-page":

@@ -4,13 +4,13 @@ define([], function () {
         $.getJSON(url, function (data) {
             callback(data);
         });
-    }
+    };
 
     var getAnswers = function (callback) {
-        $.getJSON("http://localhost:5001/api/answer/", function (data) {
+        $.getJSON("http://localhost:5001/api/answers/", function (data) {
             callback(data);
         });
-    }
+    };
     
     var getActivities = function (callback) {
         $.getJSON("http://localhost:5001/api/courses/", function (data) {
@@ -18,7 +18,17 @@ define([], function () {
                 callback(data);
             }
         });
-    }
+    };
+
+    var postAnswer = function (answer, callback) {
+        var jsonData = JSON.stringify(answer);
+        $.ajax("http://localhost:5001/api/answers", {
+            data: jsonData,
+            contentType: 'application/json',
+            type: 'POST',
+            success: callback
+        });
+    };
 
     var postQuestionOnQuestionnaire = function (questionnaireID, questionString, callback) {
         var jsonData = JSON.stringify({ description: questionString });
@@ -28,7 +38,7 @@ define([], function () {
             type: 'POST',
             success: callback
         });
-    }
+    };
 
     var getQuestionsOnQuestionnaire = function (questionnaireID, callback) {
         $.getJSON("http://localhost:5001/api/questionBank/" + questionnaireID, function (data) {
@@ -36,7 +46,7 @@ define([], function () {
                 callback(data);
             }
         });
-    }
+    };
 
 
 
@@ -45,8 +55,8 @@ define([], function () {
         postQuestionOnQuestionnaire,
         getQuestionsOnQuestionnaire,
         getQuestion,
-        getAnswers
-
+        getAnswers,
+        postAnswer
     };
 
 });
