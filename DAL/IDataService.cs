@@ -28,6 +28,8 @@ namespace DAL
 
         List<Answer> GetAnswers();
 
+        List<Answer> GetAnswersFromQuestionnaire(int questionnaireID);
+
         void CreateAnswer(int question_id, int questionnaire_id, int answer);
     }
 }

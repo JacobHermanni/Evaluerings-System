@@ -35,6 +35,17 @@ namespace WebService
             return Ok(model);
         }
 
+        [HttpGet("questionnaire/{questionnaireID}", Name = nameof(GetAnswersFromQuestionnaire))]
+        public IActionResult GetAnswersFromQuestionnaire(int questionnaireID)
+        {
+            var answer = _dataService.GetAnswersFromQuestionnaire(questionnaireID);
+            if (answer == null) return NotFound();
+
+            var model = _mapper.Map<List<AnswerModel>>(answer);
+
+            return Ok(model);
+        }
+
         [HttpPost]
         public IActionResult CreateAnswer([FromBody]AnswerModel answerModel)
         {

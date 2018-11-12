@@ -56,7 +56,7 @@ namespace DAL
             using (var db = new EvalContext())
             {
                 return db.Question
-                     .Where(q => q.questionnaire_id == questionnaireID)
+                    .Where(q => q.questionnaire_id == questionnaireID)
                     .OrderBy(x => x.question_id)
                     .ToList();
             }
@@ -148,6 +148,17 @@ namespace DAL
             using (var db = new EvalContext())
             {
                 return db.Answer
+                    .OrderBy(x => x.answer_id)
+                    .ToList();
+            }
+        }
+
+        public List<Answer> GetAnswersFromQuestionnaire(int questionnaireID)
+        {
+            using (var db = new EvalContext())
+            {
+                return db.Answer
+                    .Where(a => a.questionnaire_id == questionnaireID)
                     .OrderBy(x => x.answer_id)
                     .ToList();
             }

@@ -48,7 +48,13 @@ define([], function () {
         });
     };
 
-
+    var getAnswersFromQuestionnaire = function(questionnaireID, callback) {
+        $.getJSON("http://localhost:5001/api/answers/questionnaire/" + questionnaireID, function (data) {
+            if (data !== undefined) {
+                callback(data);
+            }
+        });
+    };
 
     return {
         getActivities,
@@ -56,6 +62,7 @@ define([], function () {
         getQuestionsOnQuestionnaire,
         getQuestion,
         getAnswers,
+        getAnswersFromQuestionnaire,
         postAnswer
     };
 
