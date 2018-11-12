@@ -26,9 +26,6 @@
         var navBarView = ko.observable('front-page');
 
         var pages = [
-            { name: 'Posts', view: 'all-posts' },
-            { name: 'Favorites', view: 'favorites-page' },
-            { name: 'History', view: 'history-page' },
             { name: 'Aktiviteter', view: 'activity-page' },
             { name: 'Resultater', view: 'result-page' },
             { name: 'Besvarelse', view: 'answer-page' }
