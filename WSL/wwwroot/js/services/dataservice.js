@@ -56,6 +56,16 @@ define([], function () {
         });
     };
 
+    var putReportOnEvaluation = function(evaluationID, report, callback) {
+        var jsonData = JSON.stringify({ evaluation_id: evaluationID, report: report });
+        $.ajax("http://localhost:5001/api/evaluation/report/", {
+            data: jsonData,
+            contentType: 'application/json',
+            type: 'PUT',
+            success: callback
+        });
+    }
+
     return {
         getActivities,
         postQuestionOnQuestionnaire,
@@ -63,7 +73,8 @@ define([], function () {
         getQuestion,
         getAnswers,
         getAnswersFromQuestionnaire,
-        postAnswer
+        postAnswer,
+        putReportOnEvaluation
     };
 
 });
