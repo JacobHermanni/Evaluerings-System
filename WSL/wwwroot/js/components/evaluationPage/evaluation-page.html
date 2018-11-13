@@ -26,11 +26,11 @@
         <br />
         <div class="form-group">
             <label>Udnyt dette felt hvis du ønsker, at tilføje et spørgsmål til spørgeskemaet ovenfor</label>
-            <input data-bind="textInput: newQuestion" class="form-control" rows="5" id="inputQuestion"></input>
+            <input data-bind="textInput: newQuestion, attr: {disabled: disabled}" class="form-control" rows="5" id="inputQuestion"/>
         </div>
 
         <div class="dropdown">
-            <button data-bind="click: openQuestionBank" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <button data-bind="click: openQuestionBank, attr: {disabled: disabled}" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 Se tidligere anvendte spørgsmål
                 <span class="caret"></span>
             </button>
@@ -40,17 +40,18 @@
         </div>
 
         <br />
-
-        <button data-bind="click: addQuestion" type="button" id="inputButton" class="btn btn-primary">
-            Tilføj spørgsmål
-        </button>
-
     </div>
 </div>
 <div>
+   
+    <button data-bind="click: addQuestion, attr: {disabled: disabled}" type="button" id="inputButton" class="btn btn-primary">
+        Tilføj spørgsmål
+    </button>
+
     <br />
-    <h4>Lås Resultater</h4>
     <br />
-    <span data-bind="text: Lås resultater"></span>
-    <button data-bind="click: låsResultater" type="button" id="inputButton" class="btn btn-primary">Lås Resultater</button>
+    <br />
+    <button data-bind="click: disable, attr: {disabled: disabled}" type="button" class="btn btn-primary">
+        Frigiv spørgeskema
+    </button>
 </div>
