@@ -9,12 +9,18 @@
     </div>
 
     <div class="col-sm-12" data-bind="visible: currentActivity() != null">
-        <h3>
-            <div data-bind="with: currentActivity">
-                Evaluering for
-                <span data-bind="text: $data.course_name"></span>
-            </div>
-        </h3>
+        <div class="text-center">
+            <h3>
+                <div data-bind="with: currentActivity">
+                    Evaluering for
+                    <span data-bind="text: $data.course_name"></span>
+                </div>
+            </h3>
+            <h5>
+                Du bedes anvende nedenstående skala, til at bedømme følgende spørgsmål på baggrund af dit indtryk af kurset/projektet:
+            </h5>
+            <h5>1 = meget uenig | 2 = uenig | 3 = neutral | 4 = enig | 5 = meget enig</h5>
+        </div>
         <ol class="list-group" data-bind="foreach: questions">
             <li class="col-sm-12 list-group-item">
                 <span class="col-sm-9" data-bind="text: $data.question"></span>
@@ -26,23 +32,10 @@
         </ol>
         <br />
         <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
         <span class="text-danger" data-bind="visible: error() != null, text: 'Besvar alle spørgsmål før du afslutter.'"></span>
         <br />
-        <button class="btn" data-bind="click: submitAnswers">Klik for at besvare</button>
-        <br />
-        <br />
-        <button class="btn" data-bind="click: back">Tilbage</button>
+        <button style="margin-top: 2em;" type="button" class="btn btn-info" data-bind="click: submitAnswers">Klik for at besvare</button>
+        <!--<button class="btn" data-bind="click: back">Tilbage</button>-->
     </div>
 </div>
 </div>

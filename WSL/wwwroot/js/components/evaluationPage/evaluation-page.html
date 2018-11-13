@@ -1,11 +1,11 @@
 <div>
-    <h3>
+    <h3 class="text-center">
         Evaluering for
         <span data-bind="text: activityName"></span>
     </h3>
     <div data-bind="foreach: questionnaires">
         <br />
-        <span data-bind="text: $data.description"></span>
+        <p class=text-center data-bind="text: $data.description"></p>
         <div data-bind="foreach: $data.questions">
             <div class="list-group top-buffer">
                 <div class="list-group-item">
@@ -15,6 +15,15 @@
         </div>
     </div>
     <div>
+        <p>Husk at formulerer dine spørgsmål korrekt. De studerende bliver bedt om, at besvare således:</p>
+        <p>
+            <i>
+                Du bedes anvende nedenstående skala, til at bedømme følgende spørgsmål på baggrund af dit indtryk af kurset/projektet:
+                <br />
+                1 = meget uenig | 2 = uenig | 3 = neutral | 4 = enig | 5 = meget enig
+            </i>
+        </p>
+        <br />
         <div class="form-group">
             <label>Udnyt dette felt hvis du ønsker, at tilføje et spørgsmål til spørgeskemaet ovenfor</label>
             <input data-bind="textInput: newQuestion" class="form-control" rows="5" id="inputQuestion"></input>
@@ -30,7 +39,7 @@
             </ul>
         </div>
 
-        <br/>
+        <br />
 
         <button data-bind="click: addQuestion" type="button" id="inputButton" class="btn btn-primary">
             Tilføj spørgsmål
