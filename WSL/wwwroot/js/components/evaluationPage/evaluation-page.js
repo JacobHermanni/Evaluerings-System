@@ -7,6 +7,7 @@ define(['knockout', 'broadcaster', 'dataservice'], function (ko, bc, dataservice
         var newReport = ko.observable("");
         var newQuestion = ko.observable("");
         var questionBank = ko.observableArray("");
+        var lockResults = ko.observable(params.);
 
         var addQuestion = function () {
             // tjek for om spørgsmålet er for kort

@@ -7,6 +7,7 @@
         var questionnaires = ko.observable();
         var questions = ko.observableArray([]);
         var question = ko.observable();
+        //var freezeResultBtn = ko.observable();
 
         // console.log("params", params);
 
@@ -214,4 +215,4 @@
 
     }
 
-});
+}); 
