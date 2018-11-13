@@ -3,8 +3,6 @@ define(['knockout', 'broadcaster', 'dataservice'], function (ko, bc, dataservice
 
         var activityName = ko.observable(params.activity.course_name);
         var questionnaires = ko.observableArray(params.activity.evaluation.questionnaires);
-        var report = ko.observable(params.activity.evaluation.report);
-        var newReport = ko.observable("");
         var newQuestion = ko.observable("");
         var questionBank = ko.observableArray("");
         var lockResults = ko.observable(params.);
@@ -51,10 +49,6 @@ define(['knockout', 'broadcaster', 'dataservice'], function (ko, bc, dataservice
             }
         });
 
-        var saveReport = function() {
-            console.log("TBD. Nuværende rapport tekst skrevet:", newReport());
-        }
-
         var createQuestions = function () {
             dataservice.postNote(tempFavId, newNoteBody(), data => {
                 // refresh siden bagefter for at have den rette liste af favorites
@@ -70,9 +64,6 @@ define(['knockout', 'broadcaster', 'dataservice'], function (ko, bc, dataservice
             questionBank,
             openQuestionBank,
             questionnaires,
-            report,
-            saveReport,
-            newReport,
             newQuestion
         };
     }

@@ -9,6 +9,9 @@
         var question = ko.observable();
         //var freezeResultBtn = ko.observable();
 
+        var report = ko.observable();
+        var newReport = ko.observable("");
+
         // console.log("params", params);
 
         var getAnswers = function (questionnaireID) {
@@ -71,10 +74,12 @@
                 getAnswers(questionnaire.questionnaire_id);
             });
             calculateAvg(answers(), questions());
-            console.log(questions());
         }
 
         var getEvaluation = function (activity) {
+            if (activity.evaluation.report != null) {
+                report(activity.evaluation.report);
+            }
             currentActivity(activity);
             questionnaires(activity.evaluation.questionnaires);
             loadResults();
@@ -91,11 +96,27 @@
 
         loadResultPage();
 
+        var saveReport = function() {
+
+            dataservice.putReportOnEvaluation(currentActivity().evaluation.evaluation_id, newReport(), function (){
+                console.log("updated the note in the database");
+            });
+
+            report(newReport());
+            newReport("");
+        }
+
+        var input = document.getElementById("inputReport");
+        input.addEventListener("keyup", function(event) {
+            event.preventDefault();
+            if (event.keyCode === 13) {
+                saveReport();
+            }
+        });
+
         var getChart = function (answers) {
 
             var answerData = [];
-
-            console.log("from getChart:", answers);
 
             var sum = 0;
             var count = answers.length;
@@ -158,11 +179,6 @@
                     y: parseInt(sum5percent),
             });
 
-            console.log("answerData:", answerData);
-
-            console.log("sum:", sum);
-            console.log("count:", count);
-
             Highcharts.chart('pieDiagram', {
                 chart: {
                     plotBackgroundColor: null,
@@ -210,7 +226,10 @@
             getAnswers,
             questions,
             getQuestionForModal,
-            question
+            question,
+            report,
+            newReport,
+            saveReport
         };
 
     }

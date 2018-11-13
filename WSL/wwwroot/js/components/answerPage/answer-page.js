@@ -58,7 +58,8 @@
                     dataservice.postAnswer(answer, () => {});
                 })
 
-                bc.publish(bc.events.changeView, { to: "result-page", from: "answer", activity: currentActivity() });
+                // bc.publish(bc.events.changeView, { to: "result-page", from: "answer", activity: currentActivity() });
+                bc.publish(bc.events.changeView, { to: "result-page", from: "answer" });
             }
 
         };
