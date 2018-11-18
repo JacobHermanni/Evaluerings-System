@@ -7,6 +7,7 @@
         var questionnaires = ko.observable();
         var questions = ko.observableArray([]);
         var question = ko.observable();
+        //var freezeResultBtn = ko.observable();
 
         var report = ko.observable();
         var newReport = ko.observable("");
@@ -233,4 +234,4 @@
 
     }
 
-});
+}); 

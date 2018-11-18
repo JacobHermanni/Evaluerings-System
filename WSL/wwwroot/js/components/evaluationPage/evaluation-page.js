@@ -6,6 +6,8 @@ define(['knockout', 'broadcaster', 'dataservice'], function (ko, bc, dataservice
         var newQuestion = ko.observable("");
         var questionBank = ko.observableArray("");
 
+
+
         var addQuestion = function () {
             // tjek for om spørgsmålet er for kort
             if (newQuestion().length < 1) {
@@ -56,11 +58,16 @@ define(['knockout', 'broadcaster', 'dataservice'], function (ko, bc, dataservice
             });
         }
 
-        var disabled = ko.observable(false);
+
 
         var disable = function () {
             disabled(true);
         }
+
+        var disabled = ko.observable(false);
+
+
+
 
         return {
             activityName,

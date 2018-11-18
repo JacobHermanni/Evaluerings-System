@@ -40,9 +40,6 @@ namespace DAL
         {
             base.OnModelCreating(modelBuilder);
 
-            // Composite key defineres her
-            //modelBuilder.Entity<Tags>().HasKey(t => new { t.post_id, t.tag });
-
         }
 
     }
