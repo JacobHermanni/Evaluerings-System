@@ -16,7 +16,7 @@ define(['knockout', 'broadcaster', 'dataservice'], function (ko, bc, dataservice
                 var lastQuestionnaire = params.activity.evaluation.questionnaires[n].questionnaire_id;
                 var current = params.activity.course_id;
 
-                dataservice.postQuestionOnQuestionnaire(lastQuestionnaire, newQuestion(), function (){
+                dataservice.postQuestionOnQuestionnaire(lastQuestionnaire, newQuestion(), function () {
                     dataservice.getActivities(data => {
                         for (var i = 0, len = data.length; i < len; i++) {
                             if (data[i].course_id === current) {
@@ -41,7 +41,7 @@ define(['knockout', 'broadcaster', 'dataservice'], function (ko, bc, dataservice
         }
 
         var input = document.getElementById("inputQuestion");
-        input.addEventListener("keyup", function(event) {
+        input.addEventListener("keyup", function (event) {
             event.preventDefault();
             if (event.keyCode === 13) {
                 addQuestion();
@@ -56,6 +56,12 @@ define(['knockout', 'broadcaster', 'dataservice'], function (ko, bc, dataservice
             });
         }
 
+        var disabled = ko.observable(false);
+
+        var disable = function () {
+            disabled(true);
+        }
+
         return {
             activityName,
             addQuestion,
@@ -63,7 +69,9 @@ define(['knockout', 'broadcaster', 'dataservice'], function (ko, bc, dataservice
             questionBank,
             openQuestionBank,
             questionnaires,
-            newQuestion
+            newQuestion,
+            disabled,
+            disable
         };
     }
 });
