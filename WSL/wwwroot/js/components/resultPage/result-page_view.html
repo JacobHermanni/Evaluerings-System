@@ -34,13 +34,14 @@
         </ol>
     </div>
 
-    <div class="col-sm-12" data-bind="visible: currentActivity() != undefined" style="margin-top:2em;">
+    <!--<div class="col-sm-12" data-bind="visible: currentActivity() != undefined" style="margin-top:2em;">-->
+    <div class="col-sm-12" data-bind="visible: false" style="margin-top:2em;">
         <h3>Opsummerende rapport:</h3>
         <br />
         <div data-bind="visible: report() != null">
             <p style="padding:1em;" data-bind="text: report"></p>
-            <button type="button" class="btn btn-success" >Send</button>
-            <button type="button" class="btn btn-info" >Rediger</button>
+            <button type="button" class="btn btn-success">Send</button>
+            <button type="button" class="btn btn-info">Rediger</button>
         </div>
         <div data-bind="visible: report() == null">
             Tilføj rapport her.
